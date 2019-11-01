@@ -1,0 +1,27 @@
+<section class="">
+  <mat-card>
+  <h1>Tasks</h1>
+      <input class="new-task"
+             placeholder="What needs to be created?"
+             [(ngModel)]="newTask"
+             (keyup.enter)="addTask()"
+             autofocus>
+      <ul style="list-style: none">
+        <li *ngFor="let task of tasks">
+          <div>
+            <input class="toggle" type="checkbox" checked>
+            <label (dblclick)="task.editing = true">   {{ task.name }}</label>
+            <button class="destroy" (click)="destroyTask(task)">x</button>
+          </div>
+          <input class="edit"
+                 #updatedTask
+                 [value]="task.name"
+                 (blur)="updateTask(task, updatedTask.value)"
+                 (keyup.escape)="task.editing = false"
+                 (keyup.enter)="updateTask(task, updatedTask.value)">
+        </li>
+      </ul>
+  </mat-card>
+
+
+</section>
