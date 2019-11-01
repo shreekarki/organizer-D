@@ -1,0 +1,50 @@
+<div class="container">
+  <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)" >
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" id="first_name"
+             required
+             [(ngModel)]="employee.first_name" name="first_name">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" id="last_name"
+             [(ngModel)]="employee.last_name" name="last_name">
+    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="birth_date">Birth Date</label>-->
+<!--      <input type="text" class="form-control" id="birth_date"-->
+<!--             [(ngModel)]="employee.birth_date" name="birth_date">-->
+<!--    </div>-->
+    <div class="form-group">
+      <label for="department_id">DepartmentId</label>
+      <input type="number"  class="form-control" id="department_id"
+             required
+             [(ngModel)]="employee.department_id" name="department_id">
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+  </form>
+  <table  class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Department Id</th>
+      <th> Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor="let employee of employees">
+      <td> {{ employee.id }}</td>
+      <td> {{ employee.first_name }}</td>
+      <td> {{ employee.last_name }}</td>
+      <td> {{ employee.department_id }}</td>
+      <td>  <button class="destroy" (click)="destroyEmployee(employee)">x</button></td>
+    </tr>
+    </tbody>
+
+  </table>
+
+
+</div>
